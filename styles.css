@@ -117,6 +117,16 @@ input[type="number"] {
   text-align: center;
 }
 
+input[type="number"].error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  height: 16px;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

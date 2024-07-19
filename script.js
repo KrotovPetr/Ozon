@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const valueInput = document.getElementById("value");
   const animateCheckbox = document.getElementById("animate");
   const hideCheckbox = document.getElementById("hide");
+  const errorMessage = document.getElementById("error-message");
 
   valueInput.addEventListener("input", updateProgress);
   animateCheckbox.addEventListener("change", toggleAnimation);
@@ -44,8 +45,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateProgress() {
     const value = parseInt(valueInput.value, 10);
+
+    if (value < 0 || value > 100 || isNaN(value)) {
+      valueInput.classList.add("error");
+      errorMessage.textContent = "Please enter a value between 0 and 100";
+      animateCheckbox.checked = false;
+      animateCheckbox.disabled = true;
+      toggleAnimation();
+      return;
+    } else {
+      valueInput.classList.remove("error");
+      errorMessage.textContent = "";
+      animateCheckbox.disabled = false;
+    }
+
     const endAngle = (value / 100) * 360;
-    const d = describeArc(50, 50, 45, 0, endAngle);
+    const d = describeArc(50, 50, 45, 0, endAngle === 360 ? 359.99 : endAngle);
     progressArc.setAttribute("d", d);
   }
 

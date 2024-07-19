@@ -29,7 +29,7 @@ body {
   font-size: 14px;
 }
 
-.progress-container {
+.card-body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -37,6 +37,11 @@ body {
   width: 100%;
   flex: 1 1 auto;
   gap: 100px;
+}
+
+.progress-container {
+  width: 150px;
+  height: 150px;
 }
 
 .progress {
@@ -146,13 +151,13 @@ input[type="number"] {
   }
 }
 
-@media (min-width: 568px) {
+@media (min-width: 568px) and (orientation: landscape) {
   .card {
     width: 568px;
     height: 320px;
   }
 
-  .progress-container {
+  .card-body {
     flex-flow: row nowrap;
   }
 }

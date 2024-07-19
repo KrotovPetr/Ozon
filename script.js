@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function toggleVisibility() {
-    progressContainer.style.opacity = hideCheckbox.checked ? "0" : "1";
+    progressContainer.style.display = hideCheckbox.checked ? "none" : "flex";
   }
 
   updateProgress();
